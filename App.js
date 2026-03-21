@@ -1,13 +1,36 @@
 import React, {Component} from "react";
-import {View, Text, StyleSheet} from 'react-native'
+import {View, TextInput, StyleSheet, Text, Button, Alert} from 'react-native'
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      nome: '',
+      input: ''
+    }
+    this.entrar = this.entrar.bind(this)
+  }
+
+  entrar() {
+    if(this.state.input === ''){
+      alert("Digiete o seu nome!")
+      return;
+    }
+    this.setState({nome:`Bem vindo: ${this.state.input} !` })
+  }  
+
   render() {
     return(
-      <View style={{flex:1, backgroundColor: '#b5b3b3'}}>
-          <View style={{height:50, backgroundColor: '#696969'}} ></View>
-          <View style={{flex:1, backgroundColor: '#ffffff'}} ></View>
-          <View style={{height:50, backgroundColor: '#696969'}} ></View>
+      <View style={{flex:1}}>
+          <TextInput
+          style={styles.input}
+          placeholder="Digiete o seu nome"
+          underlineColorAndroid='transparent'
+          onChangeText={(texto => this.setState({input: texto}))}
+          />
+
+          <Button title="Entrar" onPress={() => this.entrar()}/>
+          <Text style={styles.text}>{this.state.nome}</Text>
       </View>
     )
   }
@@ -15,15 +38,20 @@ class App extends Component {
 }
 
 const styles = StyleSheet.create({
-  margem: {
-    marginTop: 40
+  container: {
+    flex:1
   },
-  cor: {
-    color: 'red'
+  input: {
+    borderWidth: 1,
+    borderColor: "#222",
+    borderRadius: 4,
+    margin:10
   },
-  alinhaTexto: {
-    textAlign: 'center'
+  text: {
+    textAlign:'center',
+    fontSize: 25
   }
+
 })
 
 export default App;
