@@ -4,11 +4,10 @@ import {View, Text, StyleSheet} from 'react-native'
 class App extends Component {
   render() {
     return(
-      <View>
-          <Text style={styles.margem}>Eu sou o texto 1</Text>
-          <Text style={styles.cor}>Eu sou o texto 2</Text>
-          <Text style={styles.alinhaTexto}>Eu sou o texto 3</Text>
-          <Text>Eu sou o texto 4</Text>
+      <View style={{flex:1, backgroundColor: '#b5b3b3'}}>
+          <View style={{height:50, backgroundColor: '#696969'}} ></View>
+          <View style={{flex:1, backgroundColor: '#ffffff'}} ></View>
+          <View style={{height:50, backgroundColor: '#696969'}} ></View>
       </View>
     )
   }
